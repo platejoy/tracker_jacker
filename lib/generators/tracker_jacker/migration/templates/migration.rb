@@ -7,8 +7,8 @@ class CreateTrackableEvents < ActiveRecord::Migration
 
       t.string :category
       t.string :event
-      t.string :new_value
-      t.string :old_value
+      t.text :new_value
+      t.text :old_value
 
       t.timestamps null: false
     end
