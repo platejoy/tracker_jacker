@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Declare your gem's dependencies in acts_as_trackable_event.gemspec.
+# Declare your gem's dependencies in tracker_jacker.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 gemspec

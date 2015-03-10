@@ -11,7 +11,7 @@ RSpec.describe Subscription, type: :model do
       end
 
       it "saves a created event" do
-        ae = ActsAsTrackableEvent::TrackableEvent.last
+        ae = TrackerJacker::TrackableEvent.last
         expect(ae).to be_present
         expect(ae.event).to eq("created")
         expect(ae.category).to eq("Subscription")
@@ -27,7 +27,7 @@ RSpec.describe Subscription, type: :model do
       end
 
       it "saves a paused event" do
-        ae = ActsAsTrackableEvent::TrackableEvent.last
+        ae = TrackerJacker::TrackableEvent.last
         expect(ae).to be_present
         expect(ae.event).to eq("paused")
         expect(ae.category).to eq("Subscription")

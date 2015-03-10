@@ -1,6 +1,6 @@
 # Generic event to track
 class Subscription < ActiveRecord::Base
-  include ActsAsTrackableEvent::Trackable
+  include TrackerJacker::Trackable
   belongs_to :user
 
   track_event :created, category: 'Subscription', owner: :user,

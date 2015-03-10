@@ -8,7 +8,7 @@ RSpec.describe Configuration, type: :model do
     context 'when creating' do
       before do
         configuration.save!
-        @ae = ActsAsTrackableEvent::TrackableEvent.find_by(event: "height_changed")
+        @ae = TrackerJacker::TrackableEvent.find_by(event: "height_changed")
       end
 
       it "saves a created event for height_changed" do
@@ -30,9 +30,9 @@ RSpec.describe Configuration, type: :model do
     context 'when changing an attribute' do
       before do
         configuration.save!
-        ActsAsTrackableEvent::TrackableEvent.delete_all
+        TrackerJacker::TrackableEvent.delete_all
         configuration.update(height: 70.8)
-        @ae = ActsAsTrackableEvent::TrackableEvent.find_by(event: "height_changed")
+        @ae = TrackerJacker::TrackableEvent.find_by(event: "height_changed")
       end
 
       it "stores the old and new values as strings" do
@@ -44,12 +44,12 @@ RSpec.describe Configuration, type: :model do
     context 'when not attribute does not change' do
       before do
         configuration.save!
-        ActsAsTrackableEvent::TrackableEvent.delete_all
+        TrackerJacker::TrackableEvent.delete_all
         configuration.save!
       end
 
       it "does not create an event for height_changed" do
-        ae = ActsAsTrackableEvent::TrackableEvent.find_by(event: "height_changed")
+        ae = TrackerJacker::TrackableEvent.find_by(event: "height_changed")
         expect(ae).to be_nil
       end
     end
@@ -62,7 +62,7 @@ RSpec.describe Configuration, type: :model do
       end
 
       it "saves a created event for height_changed" do
-        aes = ActsAsTrackableEvent::TrackableEvent.where(event: ["color_changed", "age_changed"])
+        aes = TrackerJacker::TrackableEvent.where(event: ["color_changed", "age_changed"])
         expect(aes.count).to eq(2)
         aes.each do |ae|
           expect(ae.category).to eq("Configuration")

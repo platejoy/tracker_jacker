@@ -1,6 +1,6 @@
 require 'active_support/concern'
 
-module ActsAsTrackableEvent::Trackable
+module TrackerJacker::Trackable
   extend ActiveSupport::Concern
   EventTrackingCallback = Struct.new(:event, :if_proc, :owner_method, :category)
   AttributeTrackingCallback = Struct.new(:attribute, :owner_method, :category)
@@ -45,7 +45,7 @@ module ActsAsTrackableEvent::Trackable
       dirty_method = event_callback.attribute.to_s + "_changed?"
       if object.public_send(dirty_method)
         owner = object.public_send(event_callback.owner_method)
-        ActsAsTrackableEvent::TrackableEvent.create(
+        TrackerJacker::TrackableEvent.create(
           category: event_callback.category,
           owner: owner,
           trackable: object,
@@ -62,7 +62,7 @@ module ActsAsTrackableEvent::Trackable
     object.class.analytic_event_tracking_callbacks.values.each do |event_callback|
       if event_callback.if_proc.call(object)
         owner = object.public_send(event_callback.owner_method)
-        ActsAsTrackableEvent::TrackableEvent.create(
+        TrackerJacker::TrackableEvent.create(
           category: event_callback.category,
           owner: owner,
           trackable: object,

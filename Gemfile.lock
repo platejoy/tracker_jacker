@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    acts_as_trackable_event (0.0.1)
+    tracker_jacker (0.0.1)
       rails (~> 4.2.0)
 
 GEM
@@ -126,6 +126,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_trackable_event!
   rspec-rails
   sqlite3
+  tracker_jacker!

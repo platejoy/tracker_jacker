@@ -1,5 +1,5 @@
 class Configuration < ActiveRecord::Base
-  include ActsAsTrackableEvent::Trackable
+  include TrackerJacker::Trackable
   belongs_to :user
 
   track_attribute :height, owner: :user, category: 'Configuration'
