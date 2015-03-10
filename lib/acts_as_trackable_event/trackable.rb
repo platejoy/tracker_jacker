@@ -49,7 +49,9 @@ module ActsAsTrackableEvent::Trackable
           category: event_callback.category,
           owner: owner,
           trackable: object,
-          event: event_callback.attribute.to_s + "_changed"
+          event: event_callback.attribute.to_s + "_changed",
+          old_value: object.public_send(event_callback.attribute.to_s + "_was"),
+          new_value: object.public_send(event_callback.attribute)
         )
       end
     end

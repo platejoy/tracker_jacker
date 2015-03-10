@@ -3,8 +3,8 @@ class CreateConfigurations < ActiveRecord::Migration
     create_table :configurations do |t|
       t.belongs_to :user
       t.string :color
-      t.string :age
-      t.string :height
+      t.integer :age
+      t.decimal :height, scale: 2, precision: 5
 
       t.timestamps null: false
     end

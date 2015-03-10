@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 20150310042459) do
   create_table "configurations", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "color"
-    t.string   "age"
-    t.string   "height"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "age"
+    t.decimal  "height",     precision: 5, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "subscriptions", force: :cascade do |t|
