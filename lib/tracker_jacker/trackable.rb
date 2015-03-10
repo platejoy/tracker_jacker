@@ -1,16 +1,16 @@
-require 'active_support/concern'
-
 module TrackerJacker::Trackable
-  extend ActiveSupport::Concern
   EventTrackingCallback = Struct.new(:event, :if_proc, :owner_method, :category)
   AttributeTrackingCallback = Struct.new(:attribute, :owner_method, :category)
 
-  included do
-    after_save :run_track_event_callbacks
-    after_save :run_track_attribute_callbacks
+  def self.included(base)
+    base.extend(ClassMethods)
+    base.class_eval do
+      after_save :run_track_event_callbacks
+      after_save :run_track_attribute_callbacks
+    end
   end
 
-  class_methods do
+  module ClassMethods
     def analytic_event_tracking_callbacks
       @analytic_event_tracking_callbacks ||= {}
     end
