@@ -1,0 +1,19 @@
+# Migration responsible for creating trackable events
+class CreateTrackableEvents < ActiveRecord::Migration
+  def change
+    create_table :trackable_events do |t|
+      t.belongs_to :trackable, :polymorphic => true
+      t.belongs_to :owner, :polymorphic => true
+
+      t.string :category
+      t.string :event
+      t.string :new_value
+      t.string :old_value
+
+      t.timestamps null: false
+    end
+
+    add_index :trackable_events, [:trackable_id, :trackable_type]
+    add_index :trackable_events, [:owner_id, :owner_type]
+  end
+end
