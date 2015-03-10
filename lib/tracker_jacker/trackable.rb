@@ -55,6 +55,7 @@ module TrackerJacker::Trackable
         )
       end
     end
+    true
   end
 
   def run_track_event_callbacks
@@ -70,5 +71,6 @@ module TrackerJacker::Trackable
         )
       end
     end
+    true
   end
 end
