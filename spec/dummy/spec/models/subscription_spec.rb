@@ -35,5 +35,18 @@ RSpec.describe Subscription, type: :model do
         expect(ae.trackable).to eq(subscription)
       end
     end
+
+    context 'when ignoring tracking' do
+      before do
+        subscription.paused = true
+        subscription.ignore_tracking!
+        subscription.save!
+      end
+
+      it "does not save an event" do
+        ae = TrackerJacker::TrackableEvent.last
+        expect(ae).to be_nil
+      end
+    end
   end
 end

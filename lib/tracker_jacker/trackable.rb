@@ -40,6 +40,8 @@ module TrackerJacker::Trackable
   end
 
   def run_track_attribute_callbacks
+    return if @ignore_tracking
+
     object = self
     object.class.analytic_attribute_tracking_callbacks.values.each do |event_callback|
       dirty_method = event_callback.attribute.to_s + "_changed?"
@@ -59,6 +61,8 @@ module TrackerJacker::Trackable
   end
 
   def run_track_event_callbacks
+    return if @ignore_tracking
+
     object = self
     object.class.analytic_event_tracking_callbacks.values.each do |event_callback|
       if event_callback.if_proc.call(object)
@@ -72,5 +76,9 @@ module TrackerJacker::Trackable
       end
     end
     true
+  end
+
+  def ignore_tracking!
+    @ignore_tracking = true
   end
 end
