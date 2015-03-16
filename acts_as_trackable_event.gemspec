@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = TrackerJacker::VERSION
   s.authors     = ["John Gesimondo"]
   s.email       = ["john@jmondo.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of TrackerJacker."
-  s.description = "TODO: Description of TrackerJacker."
+  s.homepage    = "platejoy.com"
+  s.summary     = "Track events and ActiveRecord attribute changes"
+  s.description = "Track events and ActiveRecord attribute changes in a timeline"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
