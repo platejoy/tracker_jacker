@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = TrackerJacker::VERSION
   s.authors     = ["John Gesimondo"]
   s.email       = ["john@jmondo.com"]
-  s.homepage    = "platejoy.com"
+  s.homepage    = "http://platejoy.com"
   s.summary     = "Track events and ActiveRecord attribute changes"
   s.description = "Track events and ActiveRecord attribute changes in a timeline"
   s.license     = "MIT"
