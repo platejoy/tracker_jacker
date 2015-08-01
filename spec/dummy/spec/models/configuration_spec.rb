@@ -8,7 +8,7 @@ RSpec.describe Configuration, type: :model do
     context 'when creating' do
       before do
         configuration.save!
-        @ae = TrackerJacker::TrackableEvent.find_by(event: "height_changed")
+        @ae = TrackerJacker::TrackableEvent.where(event: "height_changed").first
       end
 
       it "saves a created event for height_changed" do
@@ -31,8 +31,8 @@ RSpec.describe Configuration, type: :model do
       before do
         configuration.save!
         TrackerJacker::TrackableEvent.delete_all
-        configuration.update(height: 70.8)
-        @ae = TrackerJacker::TrackableEvent.find_by(event: "height_changed")
+        configuration.update_attributes(height: 70.8)
+        @ae = TrackerJacker::TrackableEvent.where(event: "height_changed").first
       end
 
       it "stores the old and new values as strings" do
@@ -49,7 +49,7 @@ RSpec.describe Configuration, type: :model do
       end
 
       it "does not create an event for height_changed" do
-        ae = TrackerJacker::TrackableEvent.find_by(event: "height_changed")
+        ae = TrackerJacker::TrackableEvent.where(event: "height_changed").first
         expect(ae).to be_nil
       end
     end

@@ -9,15 +9,15 @@ Gem::Specification.new do |s|
   s.version     = TrackerJacker::VERSION
   s.authors     = ["John Gesimondo"]
   s.email       = ["john@jmondo.com"]
-  s.homepage    = "http://platejoy.com"
+  s.homepage    = "https://github.com/HealthyDelivery/tracker_jacker"
   s.summary     = "Track events and ActiveRecord attribute changes"
   s.description = "Track events and ActiveRecord attribute changes in a timeline"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
-  s.add_dependency "rails", "~> 4.2.0"
+  s.add_dependency "rails", ">= 3.1.0"
 
-  s.add_development_dependency "sqlite3"
-  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "sqlite3", ">= 1.3.0"
+  s.add_development_dependency "rspec-rails", ">= 2.14.0"
 end
