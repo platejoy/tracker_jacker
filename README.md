@@ -2,6 +2,34 @@
 
 A convenient gem that keeps track of events and changing attributes in your Rails app. Particularly useful for things like auditing and reporting.
 
+## Setup
+Run this command to set up the table where TrackableEvents are stored.
+```bash
+rails generate tracker_jacker:migration
+```
+
+It will create this migration for you:
+
+```ruby
+class CreateTrackableEvents < ActiveRecord::Migration
+  def change
+    create_table :trackable_events do |t|
+      t.belongs_to :trackable, :polymorphic => true
+      t.belongs_to :owner, :polymorphic => true
+
+      t.string :category
+      t.string :event
+      t.text :new_value
+      t.text :old_value
+
+      t.timestamps null: false
+    end
+
+    add_index :trackable_events, [:trackable_id, :trackable_type]
+    add_index :trackable_events, [:owner_id, :owner_type]
+  end
+end
+```
 ## Usage
 
 ### Tracking Attributes
