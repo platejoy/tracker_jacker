@@ -1,0 +1,11 @@
+rvm:
+  - 1.9.3
+  - 2.1.6
+script: 'rake'
+gemfile:
+  - rails_3.1
+  - rails_3.2
+  - rails_3.3
+  - rails_4.0
+  - rails_4.1
+  - rails_4.2
