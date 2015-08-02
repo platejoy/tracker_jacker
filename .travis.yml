@@ -1,7 +1,9 @@
+language: ruby
+cache: bundler
+script: 'bundle exec rake'
 rvm:
   - 1.9.3
   - 2.1.6
-script: 'bundle exec rake'
 gemfile:
   - rails_3.1
   - rails_3.2
