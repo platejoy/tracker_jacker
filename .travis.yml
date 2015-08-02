@@ -1,7 +1,7 @@
 rvm:
   - 1.9.3
   - 2.1.6
-script: 'rake'
+script: 'bundle exec rake'
 gemfile:
   - rails_3.1
   - rails_3.2
