@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20150310042459) do
     t.string   "new_value"
     t.string   "old_value"
     t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
   end
 
   add_index "trackable_events", ["owner_id", "owner_type"], name: "index_trackable_events_on_owner_id_and_owner_type"
