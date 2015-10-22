@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150310042459) do
 
   add_index "trackable_events", ["owner_id", "owner_type"], name: "index_trackable_events_on_owner_id_and_owner_type"
   add_index "trackable_events", ["trackable_id", "trackable_type"], name: "index_trackable_events_on_trackable_id_and_trackable_type"
+  add_index "trackable_events", ["event", "created_at"], name: "index_trackable_events_on_event_and_created_at"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
