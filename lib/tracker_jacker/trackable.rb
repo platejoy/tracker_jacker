@@ -45,15 +45,14 @@ module TrackerJacker
 
       object = self
       object.class.analytic_attribute_tracking_callbacks.values.each do |event_callback|
-        dirty_method = event_callback.attribute.to_s + "_changed?"
-        if object.public_send(dirty_method)
+        if object.saved_change_to_attribute?(event_callback.attribute)
           owner = object.public_send(event_callback.owner_method)
           TrackerJacker::TrackableEvent.create(
             category: event_callback.category,
             owner: owner,
             trackable: object,
             event: event_callback.attribute.to_s + "_changed",
-            old_value: object.public_send(event_callback.attribute.to_s + "_was"),
+            old_value: attribute_before_last_save(event_callback.attribute),
             new_value: object.public_send(event_callback.attribute)
           )
         end

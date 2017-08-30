@@ -1,7 +1,7 @@
 # Be sure to restart your server when you modify this file.
 
 # Version of your assets, change this if you want to expire all your assets.
-Dummy::Application.config.assets.version = '1.0'
+# Dummy::Application.config.assets.version = '1.0'
 
 # Add additional assets to the asset load path
 # Dummy::Application.config.assets.paths << Emoji.images_path

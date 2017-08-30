@@ -71,7 +71,7 @@ class Subscription < ActiveRecord::Base
   include TrackerJacker::Trackable
 
   track_event :paused, category: 'Subscription', owner: :user,
-    if: proc { |sub| sub.subscription_paused_changed? && sub.subscription_paused? }
+    if: proc { |sub| sub.saved_change_to_subscription? && sub.subscription_paused? }
 end
 ```
 
@@ -112,6 +112,15 @@ has_many :trackable_events, foreign_key: :owner_id,
 Then in an admin or audit system (or anywhere you see fit), you can simply call `current_user.trackable_events` to display something amazing like this!
 
 ![admin screenshot](https://photos-4.dropbox.com/t/2/AAD2fA5rMtb-LdrZAmykytHgWHpvBhCyLz1V1LeEiduTjQ/12/2239574/png/32x32/1/1438401600/0/2/Screenshot%202015-07-31%2019.11.32.png/CNbYiAEgASACIAMgBCAFIAYgBygBKAIoBw/P79oqYp6AyQyCDmNiKOy0n0aHJUDQoXWVscIs5NU8-s?size=1280x960&size_mode=2)
+
+
+### Testing
+
+$ cd spec/dummy
+$ rake db:create RAILS_ENV=test
+$ rake db:migrate RAILS_ENV=test
+$ cd -
+$ rake spec
 
 
 ### That's it and that's all

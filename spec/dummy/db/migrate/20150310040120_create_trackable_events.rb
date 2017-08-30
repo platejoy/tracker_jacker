@@ -1,5 +1,5 @@
 # Migration responsible for creating trackable events
-class CreateTrackableEvents < ActiveRecord::Migration
+class CreateTrackableEvents < ActiveRecord::Migration[4.2]
   def change
     create_table :trackable_events do |t|
       t.belongs_to :trackable, :polymorphic => true

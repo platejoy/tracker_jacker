@@ -4,8 +4,8 @@ class Subscription < ActiveRecord::Base
   belongs_to :user
 
   track_event :created, category: 'Subscription', owner: :user,
-    if: proc {|sub| sub.created_at_changed?}
+    if: proc {|sub| sub.saved_change_to_created_at?}
 
   track_event :paused, category: 'Subscription', owner: :user,
-    if: proc {|sub| sub.paused_changed? && sub.paused?}
+    if: proc {|sub| sub.saved_change_to_paused? && sub.paused?}
 end
